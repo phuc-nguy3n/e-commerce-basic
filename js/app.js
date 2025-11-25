@@ -3,7 +3,11 @@
 // 1. IMPORT CÁC MODULE CẦN THIẾT
 import { products } from "./data.js"; // Named Import cho dữ liệu
 import renderProducts from "./modules/product.js"; // Default Import cho hàm hiển thị
-import { addItemToCart, removeItemFromCart } from "./modules/cart.js"; // Named Import cho chức năng Giỏ hàng
+import {
+  addItemToCart,
+  removeItemFromCart,
+  updateItemQuantity,
+} from "./modules/cart.js"; // Named Import cho chức năng Giỏ hàng
 
 /**
  * Thiết lập các trình lắng nghe sự kiện (Event Listeners) cho các nút tương tác.
@@ -38,6 +42,31 @@ function setupEventListeners() {
         removeItemFromCart(productId);
 
         // Ngăn chặn hành vi mặc định (ví dụ: nếu nút là thẻ <a>)
+        event.preventDefault();
+      }
+
+      // Logic mới cho nút TĂNG SỐ LƯỢNG
+      else if (event.target.classList.contains("increase-qty-btn")) {
+        const productId = parseInt(event.target.dataset.id);
+        // Gọi hàm updateItemQuantity với change là +1
+        // CODE BẠN VÀO ĐÂY
+        updateItemQuantity(productId, 1);
+      }
+
+      // Logic cho nút GIẢM SỐ LƯỢNG (.decrease-qty-btn)
+      else if (event.target.classList.contains("decrease-qty-btn")) {
+        const productId = parseInt(event.target.dataset.id);
+        // Gọi hàm updateItemQuantity với change là -1
+        // CODE BẠN VÀO ĐÂY
+        updateItemQuantity(productId, -1);
+      }
+
+      // (Optional) Ngăn chặn hành vi mặc định
+      if (
+        event.target.classList.contains("remove-item-btn") ||
+        event.target.classList.contains("increase-qty-btn") ||
+        event.target.classList.contains("decrease-qty-btn")
+      ) {
         event.preventDefault();
       }
     });

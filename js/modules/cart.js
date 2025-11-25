@@ -129,21 +129,44 @@ function renderCartItems() {
       const subtotal = item.price * item.quantity;
 
       return `
-            <div class="cart-item" data-id="${item.id}">
-                <span class="item-name">${item.name}</span>
-                <span class="item-quantity">Số lượng: ${item.quantity}</span>
-                <span class="item-price">Giá: ${subtotal.toLocaleString(
-                  "vi-VN"
-                )} VND</span>
-                <button class="remove-item-btn" data-id="${
-                  item.id
-                }">Xóa</button>
-            </div>
+           <div class="cart-item" data-id="${item.id}">
+            <span class="item-name">${item.name}</span>
+            <span class="item-price">Giá: ${subtotal.toLocaleString(
+              "vi-VN"
+            )} VND</span>
+            
+            <div class="quantity-controls">
+                <button class="decrease-qty-btn" data-id="${item.id}">-</button>
+                <span class="item-quantity">${item.quantity}</span>
+                <button class="increase-qty-btn" data-id="${item.id}">+</button>
+                </div>
+
+            <button class="remove-item-btn" data-id="${item.id}">Xóa</button>
+        </div>
         `;
     })
     .join(""); // Nối mảng chuỗi HTML lại
 }
 
-export function updateCartQuantity(productId, quantity) {
-  /* ... */
+/**
+ * Cập nhật số lượng của một sản phẩm đã có trong giỏ hàng.
+ * @param {number} productId - ID sản phẩm cần cập nhật.
+ * @param {number} change - Giá trị thay đổi số lượng (+1 hoặc -1).
+ */
+export function updateItemQuantity(productId, change) {
+  // 1. Tìm sản phẩm hiện có trong giỏ hàng
+  const existingItem = cart.find((item) => item.id === productId);
+  if (existingItem) {
+    // 2. Cập nhật số lượng
+    existingItem.quantity += change;
+    // 3. Nếu số lượng <= 0, xóa sản phẩm khỏi giỏ hàng
+    if (existingItem.quantity <= 0) {
+      cart = cart.filter((item) => item.id !== productId);
+    }
+  }
+
+  // 4. Lưu trạng thái mới
+  saveCart();
+  // 5. Cập nhật giao diện
+  updateCartDisplay();
 }
