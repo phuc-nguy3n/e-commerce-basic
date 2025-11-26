@@ -1,0 +1,36 @@
+/* css/styles.css (Hoặc css/reset.css) */
+
+/* Thiết lập box-sizing để dễ dàng tính toán kích thước */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Xóa margin mặc định của body và đặt một số thuộc tính cơ bản */
+body {
+    margin: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    /* Tối ưu hiển thị font */
+    font-family: 'Inter', sans-serif;
+    /* Áp dụng font Inter */
+    font-size: 16px;
+    /* Thiết lập kích thước font cơ bản */
+}
+
+/* Loại bỏ gạch chân của link mặc định */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Đảm bảo media elements (img, video...) được responsive */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
