@@ -1,0 +1,9 @@
+/* Media Query cho Mobile/Tablet (áp dụng khi màn hình nhỏ hơn 992px) */
+@media (max-width: 991px) {
+
+    /* Chọn tất cả các cột footer (col-12) trừ cột đầu tiên (Logo/Info) */
+    footer .col-12:not(:first-child) {
+        margin-top: 30px;
+        /* Thêm khoảng cách trên để tách các cột ra */
+    }
+}
