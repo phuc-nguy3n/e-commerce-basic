@@ -77,3 +77,34 @@ svg {
 .icon-link:hover {
     background-color: #e0e0e0;
 }
+
+footer a {
+    color: #555;
+    text-decoration: none;
+}
+
+footer .border-top {
+    padding-top: 35px !important;
+    margin-top: 25px !important;
+}
+
+footer>.container {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+}
+
+.footer-links li a {
+    color: #555 !important;
+    text-decoration: none;
+    transition: color 0.2s;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.footer-links li a:hover {
+    color: #000 !important;
+}
+
+.footer-container {
+    background-color: #f8f8f8;
+}
