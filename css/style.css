@@ -121,3 +121,92 @@ footer .logo-text::after {
 .footer-container {
     background-color: #f8f8f8;
 }
+
+/* ========================================================================= */
+/* HERO BANNER SLIDE STYLING */
+/* ========================================================================= */
+
+
+
+/* 2. Định kiểu Nút CTA (Màu Cam/Coral) */
+.btn-cta-primary {
+    background-color: #fc644e;
+    /* Màu Cam/Coral */
+    color: #fff;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-cta-primary:hover {
+    background-color: #e55a44;
+    /* Màu đậm hơn khi hover */
+    color: #fff;
+}
+
+
+
+/* 5. Tùy chỉnh Controls và Indicators */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 6%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    /* Tạo hình tròn màu Cam cho mũi tên */
+    background-color: #fc644e;
+    background-size: 50%;
+    border-radius: 50%;
+    padding: 20px;
+}
+
+.carousel-indicators button {
+    /* Màu Indicators là Cam */
+    background-color: #fc644e !important;
+    width: 30px;
+    height: 3px;
+    margin: 0 5px;
+}
+
+.carousel-caption-custom {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    color: #111;
+    text-align: left;
+    max-width: 450px;
+}
+
+/* ===== Text styles ===== */
+.sub-title {
+    margin: 0 0 10px;
+    font-size: 20px;
+    color: #555;
+}
+
+.main-title {
+    margin: 0;
+    font-size: 72px;
+    line-height: 0.95;
+    font-weight: 800;
+    color: #000;
+}
+
+.accent {
+    color: #ff7c6b;
+}
+
+/* ===== Button ===== */
+.btn-shop {
+    margin-top: 22px;
+    padding: 12px 28px;
+    background: #ff6f54;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}

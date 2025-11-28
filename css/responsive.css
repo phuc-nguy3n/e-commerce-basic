@@ -6,4 +6,67 @@
         margin-top: 30px;
         /* Thêm khoảng cách trên để tách các cột ra */
     }
+
+    .carousel-caption-custom {
+        right: 5%;
+    }
+
+    .main-title {
+        font-size: 50px;
+    }
+
+    .sub-title {
+        font-size: 18px;
+    }
+
+    .btn-shop {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
+
+/* ===================== */
+/* Responsive for Mobile */
+/* ===================== */
+@media (max-width: 767px) {
+    .carousel-caption-custom {
+        position: absolute;
+        bottom: 30px;
+        top: auto;
+        right: 50%;
+        transform: translateX(50%);
+        text-align: center;
+        max-width: 90%;
+    }
+
+    .main-title {
+        font-size: 32px;
+        line-height: 1.1;
+    }
+
+    .sub-title {
+        font-size: 16px;
+    }
+
+    .btn-shop {
+        padding: 10px 22px;
+        font-size: 15px;
+    }
+}
+
+/* Mobile nhỏ (max-width: 480px) */
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 26px;
+    }
+
+    .sub-title {
+        font-size: 14px;
+    }
+
+    .btn-shop {
+        padding: 8px 18px;
+        font-size: 14px;
+    }
 }
