@@ -83,6 +83,7 @@ footer a {
     text-decoration: none;
 }
 
+
 footer .border-top {
     padding-top: 35px !important;
     margin-top: 25px !important;
@@ -91,6 +92,18 @@ footer .border-top {
 footer>.container {
     padding-left: 1.5rem !important;
     padding-right: 1.5rem !important;
+}
+
+footer .logo-text::after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    right: -10px;
+    width: 8px;
+    height: 8px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    /* Tạo hình tròn */
 }
 
 .footer-links li a {
