@@ -126,9 +126,6 @@ footer .logo-text::after {
 /* HERO BANNER SLIDE STYLING */
 /* ========================================================================= */
 
-
-
-/* 2. Định kiểu Nút CTA (Màu Cam/Coral) */
 .btn-cta-primary {
     background-color: #fc644e;
     /* Màu Cam/Coral */
@@ -143,9 +140,6 @@ footer .logo-text::after {
     color: #fff;
 }
 
-
-
-/* 5. Tùy chỉnh Controls và Indicators */
 .carousel-control-prev,
 .carousel-control-next {
     width: 6%;
@@ -209,4 +203,71 @@ footer .logo-text::after {
     border-radius: 4px;
     font-weight: 600;
     cursor: pointer;
+}
+
+/* ========================================================================= */
+/* PROMO BANNERS SLIDE STYLING */
+/* ========================================================================= */
+.promo-block {
+    height: 200px;
+    /* Kích thước hình chữ nhật đã được thiết lập */
+    background-color: #f7f7f7;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease;
+}
+
+.promo-block:hover {
+    /* Hiệu ứng đổ bóng nhẹ khi hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.promo-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Định kiểu Nội dung (Text Overlay) */
+.promo-content {
+    position: absolute;
+    bottom: 30px;
+    /* Khoảng cách từ dưới lên */
+    right: 30px;
+    /* Căn lề phải */
+    text-align: right;
+    width: 50%;
+    /* Giới hạn chiều rộng nội dung */
+}
+
+.promo-title {
+    font-size: 0.95rem;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.promo-discount {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Định kiểu Link SHOP NOW */
+.promo-link {
+    font-weight: 600;
+    color: #fc644e;
+    /* Màu cam/coral (Giống nút CTA) */
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 3px;
+    border-bottom: 2px solid #fc644e;
+    /* Gạch chân màu cam */
+    transition: color 0.2s, border-bottom-color 0.2s;
+}
+
+.promo-link:hover {
+    color: #e55a44;
+    border-bottom-color: #e55a44;
 }
