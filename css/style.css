@@ -523,3 +523,78 @@ footer .logo-text::after {
     transform: translateY(-5px);
     /* Dịch chuyển nhẹ lên trên khi hover */
 }
+
+/* ========================================================================= */
+/* MINI CART DROPDOWN STYLING (HEADER) */
+/* ========================================================================= */
+
+.cart-dropdown {
+    /* Đảm bảo phần tử cha có position: relative */
+    position: relative;
+    /* Tăng z-index để dropdown hiển thị trên các nội dung khác */
+    z-index: 1050;
+}
+
+.mini-cart {
+    /* Định vị tuyệt đối ở góc trên bên phải */
+    position: absolute;
+    top: 150%;
+    /* Dịch chuyển xuống một chút để không che icon */
+    right: 0;
+
+    /* Kích thước và kiểu dáng */
+    width: 320px;
+    /* Chiều rộng cố định */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    border-top: 3px solid #fc644e;
+    /* Viền trên màu cam */
+
+    /* Ẩn đi mặc định */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease-in-out;
+}
+
+/* HIỆN CART KHI HOVER */
+.cart-dropdown:hover .mini-cart {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Định kiểu cho Hình ảnh sản phẩm */
+.cart-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 3px;
+    background-color: #f7f7f7;
+    padding: 5px;
+}
+
+/* Định kiểu cho nút X xóa sản phẩm */
+.btn-remove {
+    font-size: 0.9rem;
+    color: #888 !important;
+    transition: color 0.2s;
+}
+
+.btn-remove:hover {
+    color: #fc644e !important;
+}
+
+/* CSS cho số lượng sản phẩm (Tùy chọn) */
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -2px;
+    background-color: #fc644e;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 7px;
+}
