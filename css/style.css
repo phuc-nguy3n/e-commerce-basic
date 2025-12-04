@@ -662,3 +662,84 @@ footer .logo-text::after {
     background-color: #f7f7f7;
     color: #fc644e;
 }
+
+/* ========================================================================= */
+/* PRODUCT DETAIL PAGE STYLING */
+/* ========================================================================= */
+
+/* Gallery Thumbnails */
+.img-thumbnail {
+    cursor: pointer;
+    border: 2px solid transparent;
+    /* Viền trong suốt mặc định */
+    transition: border-color 0.2s;
+}
+
+.img-thumbnail:hover,
+.img-thumbnail.active-thumb {
+    border-color: #fc644e;
+    /* Viền màu cam khi hover hoặc active */
+}
+
+/* Size Swatches */
+.size-swatch {
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.size-swatch.active-option {
+    background-color: #fc644e;
+    border-color: #fc644e !important;
+    color: white;
+}
+
+.size-swatch:hover:not(.active-option) {
+    background-color: #f7f7f7;
+}
+
+/* Quantity Input */
+.quantity-input .form-control {
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+}
+
+.quantity-input .btn {
+    border-color: #ced4da;
+}
+
+/* Wishlist Button */
+.btn-wishlist {
+    color: #fc644e;
+    border-color: #fc644e !important;
+}
+
+.btn-wishlist:hover {
+    background-color: #fc644e;
+    color: white !important;
+}
+
+/* Product Tabs */
+.product-tabs .nav-link {
+    color: #333;
+    font-weight: bold;
+    border: 1px solid transparent;
+    border-bottom: none;
+    transition: color 0.2s;
+}
+
+.product-tabs .nav-link.active {
+    color: #fc644e;
+    border-color: #eee #eee #fff #eee;
+}
+
+.product-tabs .nav-link:hover:not(.active) {
+    color: #fc644e;
+}
+
+/* Review Styles */
+.review-item .rating {
+    font-size: 0.8rem;
+}

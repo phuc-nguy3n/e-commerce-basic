@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-commerce Project</title>
+
+    <!-- Font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/library.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="navbar navbar-expand-lg bg-white p-3 border-bottom">
+        <div class="container-fluid">
+          <a class="navbar-brand logo-text" href="#">FENSIE</a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="mainNavbar"
+          >
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./shop.html">Shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Faq</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+
+            <div class="d-flex align-items-center ms-lg-4">
+              <!-- Icon Tìm kiếm (Giữ nguyên) -->
+              <a href="#" class="nav-link text-dark me-3 icon-link">🔍</a>
+
+              <!-- Icon Giỏ hàng VÀ Dropdown Cart -->
+              <div class="position-relative cart-dropdown">
+                <!-- Icon Giỏ hàng (Trigger) -->
+                <a href="#" class="nav-link text-dark icon-link p-0">
+                  <!-- Icon Giỏ hàng -->
+                  <i class="fas fa-shopping-cart"></i>
+                  <!-- Bạn có thể thêm số lượng sản phẩm ở đây nếu cần -->
+                  <span class="cart-count">2</span>
+                </a>
+
+                <!-- MINI CART DROPDOWN -->
+                <div class="mini-cart shadow">
+                  <!-- Sản phẩm 1 -->
+                  <div
+                    class="cart-item d-flex align-items-center mb-3 pb-3 border-bottom"
+                  >
+                    <!-- Thay bằng ảnh sản phẩm thực tế của bạn -->
+                    <img
+                      src="./assets/images/products/product-1.jpg"
+                      alt="Ladies Bag"
+                      class="cart-item-img me-3"
+                    />
+                    <div class="cart-item-info flex-grow-1">
+                      <h6 class="mb-0">Ladies Bag</h6>
+                      <small class="text-secondary">1 x $1250.00</small>
+                    </div>
+                    <a href="#" class="btn-remove text-danger"
+                      ><i class="fas fa-times"></i
+                    ></a>
+                  </div>
+
+                  <!-- Sản phẩm 2 -->
+                  <div
+                    class="cart-item d-flex align-items-center mb-3 pb-3 border-bottom"
+                  >
+                    <!-- Thay bằng ảnh sản phẩm thực tế của bạn -->
+                    <img
+                      src="./assets/images/products/product-2.jpg"
+                      alt="Skinny Jeans"
+                      class="cart-item-img me-3"
+                    />
+                    <div class="cart-item-info flex-grow-1">
+                      <h6 class="mb-0">Skinny Jeans</h6>
+                      <small class="text-secondary">1 x $1250.00</small>
+                    </div>
+                    <a href="#" class="btn-remove text-danger"
+                      ><i class="fas fa-times"></i
+                    ></a>
+                  </div>
+
+                  <!-- Tổng cộng -->
+                  <div class="d-flex justify-content-between my-3 pt-2">
+                    <h5 class="fw-bold mb-0">Total</h5>
+                    <h5 class="fw-bold mb-0">$1799.00</h5>
+                  </div>
+
+                  <!-- Nút Hành động -->
+                  <div class="d-grid gap-2">
+                    <a href="#" class="btn btn-outline-dark">View Cart</a>
+                    <a href="#" class="btn btn-cta-primary">Checkout</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- ========================================================================= -->
+      <!-- 2. BREADCRUMB -->
+      <!-- ========================================================================= -->
+      <section class="breadcrumb-bar py-3" style="background-color: #f7f7f7">
+        <div class="container">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item">
+                <a href="index.html" class="text-secondary text-decoration-none"
+                  >Home</a
+                >
+              </li>
+              <li class="breadcrumb-item">
+                <a href="shop.html" class="text-secondary text-decoration-none"
+                  >Shop</a
+                >
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Floral Kirby Dress
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- 3. PRODUCT DETAIL SECTION -->
+      <!-- ========================================================================= -->
+      <section class="product-detail-section py-5">
+        <div class="container">
+          <div class="row gx-5">
+            <!-- Cột 1 (lg-5): PRODUCT GALLERY -->
+            <div class="col-lg-5 mb-5 mb-lg-0">
+              <div class="product-gallery">
+                <!-- Ảnh Chính (Main Image) -->
+                <div
+                  class="main-image mb-4 border rounded"
+                  style="padding: 20px"
+                >
+                  <img
+                    src="./assets/images/products/product-1.jpg"
+                    class="img-fluid w-100"
+                    alt="Main Product Image"
+                  />
+                </div>
+
+                <!-- Ảnh Thumbnails (Gallery) -->
+                <div class="row g-3">
+                  <div class="col-3">
+                    <img
+                      src="./assets/images/products/product-1.jpg"
+                      class="img-thumbnail w-100 p-2 active-thumb"
+                      alt="Thumbnail 1"
+                    />
+                  </div>
+                  <div class="col-3">
+                    <img
+                      src="./assets/images/products/product-2.jpg"
+                      class="img-thumbnail w-100 p-2"
+                      alt="Thumbnail 2"
+                    />
+                  </div>
+                  <div class="col-3">
+                    <img
+                      src="./assets/images/products/product-3.jpg"
+                      class="img-thumbnail w-100 p-2"
+                      alt="Thumbnail 3"
+                    />
+                  </div>
+                  <div class="col-3">
+                    <img
+                      src="./assets/images/products/product-4.jpg"
+                      class="img-thumbnail w-100 p-2"
+                      alt="Thumbnail 4"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cột 2 (lg-7): PRODUCT INFO & ACTIONS -->
+            <div class="col-lg-7">
+              <div class="product-info-details">
+                <h1 class="display-5 fw-bold mb-3">Floral Kirby Dress</h1>
+
+                <!-- Đánh giá và SKU -->
+                <div class="d-flex align-items-center mb-3">
+                  <div class="rating text-warning me-3">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <span class="ms-2 text-secondary">(4 Reviews)</span>
+                  </div>
+                  <span class="text-secondary">SKU: PD19010</span>
+                </div>
+
+                <!-- Giá -->
+                <div class="price-section mb-4">
+                  <span class="current-price fs-2 fw-bold me-3 text-danger"
+                    >$329.10</span
+                  >
+                  <span
+                    class="old-price text-secondary text-decoration-line-through fs-5"
+                    >$420.00</span
+                  >
+                  <span class="sale-percent text-success fw-bold ms-2"
+                    >21% Off</span
+                  >
+                </div>
+
+                <!-- Mô tả ngắn -->
+                <p class="mb-4 text-secondary">
+                  Dolores sed ut tempora sit amet, consectetur adipiscing elit.
+                  Aliquam interdum diam vitae imperdiet bibendum. Nunc nec
+                  elementum ipsum. Aliquam interdum diam vitae imperdiet
+                  bibendum. Nunc nec elementum ipsum.
+                </p>
+
+                <!-- Tùy chọn Kích thước -->
+                <div class="product-options mb-4 pb-4 border-bottom">
+                  <h6 class="fw-bold mb-2">
+                    Size: <span class="selected-size text-dark">M</span>
+                  </h6>
+                  <div class="d-flex gap-2">
+                    <span
+                      class="size-swatch border px-3 py-1 rounded active-option"
+                      data-size="S"
+                      >S</span
+                    >
+                    <span
+                      class="size-swatch border px-3 py-1 rounded"
+                      data-size="M"
+                      >M</span
+                    >
+                    <span
+                      class="size-swatch border px-3 py-1 rounded"
+                      data-size="L"
+                      >L</span
+                    >
+                    <span
+                      class="size-swatch border px-3 py-1 rounded"
+                      data-size="XL"
+                      >XL</span
+                    >
+                  </div>
+                </div>
+
+                <!-- Hành động: Số lượng và Nút -->
+                <div class="d-flex align-items-center mb-4">
+                  <!-- Bộ điều chỉnh số lượng -->
+                  <div
+                    class="input-group quantity-input me-3"
+                    style="width: 150px"
+                  >
+                    <button
+                      class="btn btn-outline-secondary"
+                      type="button"
+                      id="button-addon1"
+                    >
+                      -
+                    </button>
+                    <input
+                      type="text"
+                      class="form-control text-center"
+                      value="1"
+                      readonly
+                    />
+                    <button
+                      class="btn btn-outline-secondary"
+                      type="button"
+                      id="button-addon2"
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  <!-- Nút Thêm vào giỏ hàng -->
+                  <button class="btn btn-cta-primary btn-lg me-3">
+                    <i class="fas fa-shopping-cart me-2"></i> Add to Cart
+                  </button>
+
+                  <!-- Nút Thêm vào Yêu thích -->
+                  <button class="btn btn-outline-secondary btn-lg btn-wishlist">
+                    <i class="far fa-heart"></i>
+                  </button>
+                </div>
+
+                <!-- Social Share -->
+                <div class="social-share mt-4 pt-4 border-top">
+                  <span class="fw-bold me-3">Share on:</span>
+                  <a href="#" class="text-secondary me-3"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a href="#" class="text-secondary me-3"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a href="#" class="text-secondary"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCT TABS: Description, Reviews -->
+          <div class="row mt-5">
+            <div class="col-12">
+              <ul class="nav nav-tabs product-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link active"
+                    id="description-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#description"
+                    type="button"
+                    role="tab"
+                    aria-controls="description"
+                    aria-selected="true"
+                  >
+                    Description
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="reviews-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#reviews"
+                    type="button"
+                    role="tab"
+                    aria-controls="reviews"
+                    aria-selected="false"
+                  >
+                    Reviews (4)
+                  </button>
+                </li>
+              </ul>
+              <div
+                class="tab-content border border-top-0 p-4"
+                id="myTabContent"
+              >
+                <!-- Tab 1: Description -->
+                <div
+                  class="tab-pane fade show active"
+                  id="description"
+                  role="tabpanel"
+                  aria-labelledby="description-tab"
+                >
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                  <ul>
+                    <li>Material: 100% Cotton</li>
+                    <li>Care: Machine wash cold</li>
+                    <li>Origin: Made in Vietnam</li>
+                  </ul>
+                </div>
+                <!-- Tab 2: Reviews -->
+                <div
+                  class="tab-pane fade"
+                  id="reviews"
+                  role="tabpanel"
+                  aria-labelledby="reviews-tab"
+                >
+                  <h5 class="fw-bold mb-3">Customer Reviews</h5>
+                  <!-- Review 1 -->
+                  <div class="review-item mb-3 pb-3 border-bottom">
+                    <div
+                      class="d-flex justify-content-between align-items-start"
+                    >
+                      <div>
+                        <h6 class="fw-bold mb-0">Jane Doe</h6>
+                        <small class="text-secondary">October 25, 2024</small>
+                      </div>
+                      <div class="rating text-warning">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i
+                        ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                        ><i class="fas fa-star"></i>
+                      </div>
+                    </div>
+                    <p class="mt-2 mb-0">
+                      The fabric is amazing and the fit is perfect. Highly
+                      recommend!
+                    </p>
+                  </div>
+                  <!-- ... Thêm các review khác ... -->
+                  <h5 class="fw-bold mt-4">Write a Review</h5>
+                  <!-- Form đánh giá sẽ được thêm ở đây -->
+                  <p class="text-secondary">Review form goes here...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- 4. RELATED PRODUCTS -->
+      <!-- ========================================================================= -->
+      <section class="related-products py-5 border-top">
+        <div class="container">
+          <h2 class="text-center fw-bold mb-5">Related Products</h2>
+          <div class="row g-4">
+            <!-- SẢN PHẨM LIÊN QUAN MẪU 1 (Dùng cấu trúc product-card) -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="product-card">
+                <div class="product-image-container">
+                  <img
+                    src="./assets/images/products/product-2.jpg"
+                    class="img-fluid"
+                    alt="Product 4"
+                  />
+                  <div class="product-hover-overlay">
+                    <a href="#" class="btn-action"
+                      ><i class="fas fa-shopping-cart"></i
+                    ></a>
+                    <a href="#" class="btn-action"
+                      ><i class="fas fa-heart"></i
+                    ></a>
+                  </div>
+                </div>
+                <div class="product-info text-center mt-3">
+                  <h4 class="product-name">Slim Fit Trousers</h4>
+                  <p class="product-price">$85.00</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- SẢN PHẨM LIÊN QUAN MẪU 2 -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="product-card">
+                <div class="product-image-container">
+                  <img
+                    src="./assets/images/products/product-3.jpg"
+                    class="img-fluid"
+                    alt="Product 3"
+                  />
+                  <span class="sale-badge">SALE</span>
+                  <div class="product-hover-overlay">
+                    <a href="#" class="btn-action"
+                      ><i class="fas fa-shopping-cart"></i
+                    ></a>
+                    <a href="#" class="btn-action"
+                      ><i class="fas fa-heart"></i
+                    ></a>
+                  </div>
+                </div>
+                <div class="product-info text-center mt-3">
+                  <h4 class="product-name">Classic Denim</h4>
+                  <p class="product-price">$49.99</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ... Thêm 2 sản phẩm nữa ... -->
+            <!-- <div class="col-lg-3 col-md-6 col-sm-6">...</div>
+            <div class="col-lg-3 col-md-6 col-sm-6">...</div> -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-3">
+      <div class="container-fluid">
+        <div class="footer-container row py-5">
+          <div class="col-lg-3 col-12">
+            <a class="navbar-brand logo-text" href="#">FENSIE</a>
+
+            <p class="text-secondary mt-3 mb-4">
+              Iste dolores iure quis excepturi, deserunt praesentium.
+            </p>
+
+            <p class="text-dark mb-1">
+              <span class="fw-bold">Location : </span> North South ,USA
+            </p>
+
+            <p class="text-dark mb-4">
+              <span class="fw-bold">Support Email : </span>
+              <a href="mailto:support@email.com" class="text-secondary"
+                >support@email.com</a
+              >
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-12">
+            <h6 class="fw-bold mb-3">Category</h6>
+
+            <ul class="list-unstyled footer-links">
+              <li>
+                <a href="#" class="text-secondary d-block mb-2"
+                  >Men's Fashion</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2"
+                  >Women's Fashion</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2">Kids Fashion</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2">Accessories</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2"
+                  >Shoe Collection</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-12">
+            <h6 class="fw-bold mb-3">Useful Link</h6>
+
+            <ul class="list-unstyled footer-links">
+              <li>
+                <a href="#" class="text-secondary d-block mb-2">News & Tips</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2">About Us</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2">Support</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2">Our Shop</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-12">
+            <h6 class="fw-bold mb-3">Opening Hours</h6>
+
+            <ul class="list-unstyled footer-hours">
+              <li class="d-flex justify-content-between text-secondary mb-2">
+                <span>Monday-Friday</span>
+                <span>8.00-20.00</span>
+              </li>
+              <li class="d-flex justify-content-between text-secondary mb-2">
+                <span>Saturday</span>
+                <span>10.00-20.00</span>
+              </li>
+              <li class="d-flex justify-content-between text-secondary mb-2">
+                <span>Sunday</span>
+                <span>12-20.00</span>
+              </li>
+            </ul>
+
+            <p class="mt-4 fw-bold">Call Now : +(5)(305) 785-0437</p>
+          </div>
+        </div>
+
+        <div class="row border-top">
+          <div class="col-md-6 col-12 text-center text-md-start">
+            <p class="text-secondary mb-0">
+              @ Copyright Reserved to FENSIE & made by
+              <a href="#" class="text-secondary fw-bold text-decoration-none"
+                >Funkie</a
+              >
+            </p>
+          </div>
+
+          <div class="col-md-6 col-12 text-center text-md-end">
+            <a href="#" class="text-secondary me-3 text-decoration-none"
+              >Privacy Policy</a
+            >
+            <a href="#" class="text-secondary me-3 text-decoration-none"
+              >Terms & Conditions</a
+            >
+            <a href="#" class="text-secondary me-3 text-decoration-none"
+              >Cookie Policy</a
+            >
+            <a href="#" class="text-secondary text-decoration-none"
+              >Terms of Sale</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/4a7da8863e.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Custom JS -->
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
