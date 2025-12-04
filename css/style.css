@@ -476,3 +476,50 @@ footer .logo-text::after {
     padding: 12px 40px;
     font-size: 1.25rem;
 }
+
+/* ========================================================================= */
+/* TRUST/FEATURES BAR STYLING */
+/* ========================================================================= */
+
+.trust-features-section {
+    padding: 60px 0;
+    border-top: 1px solid #eee;
+    /* Đường viền nhẹ ở trên để tách biệt khỏi section trên */
+}
+
+/* Định kiểu cho Icon */
+.feature-icon {
+    font-size: 2.5rem;
+    /* Kích thước lớn hơn */
+    color: #fc644e;
+    /* Màu cam/coral */
+    display: block;
+    /* Đảm bảo margin-bottom hoạt động */
+    margin-bottom: 15px;
+    line-height: 1;
+}
+
+/* Định kiểu cho Tiêu đề */
+.feature-title {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+/* Định kiểu cho Mô tả */
+.feature-description {
+    font-size: 0.95rem;
+    color: #888;
+    margin-bottom: 0;
+}
+
+/* Hiệu ứng Hover (Không bắt buộc, nhưng chuyên nghiệp hơn) */
+.feature-block {
+    transition: transform 0.3s ease;
+}
+
+.feature-block:hover {
+    transform: translateY(-5px);
+    /* Dịch chuyển nhẹ lên trên khi hover */
+}
