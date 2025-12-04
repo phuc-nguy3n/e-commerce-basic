@@ -271,3 +271,125 @@ footer .logo-text::after {
     color: #e55a44;
     border-bottom-color: #e55a44;
 }
+
+/* ========================================================================= */
+/* NEW ARRIVALS / PRODUCT CARD STYLING */
+/* ========================================================================= */
+
+/* Định kiểu Khu vực chứa Ảnh */
+.product-image-container {
+    background-color: #f7f7f7;
+    /* Nền xám nhạt như trong mẫu */
+    position: relative;
+    /* Rất quan trọng để định vị tuyệt đối badge và overlay */
+    overflow: hidden;
+    /* Cắt lớp phủ hover */
+
+    /* Thêm padding nhẹ xung quanh ảnh */
+}
+
+.product-image-container img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover .product-image-container img {
+    /* Hiệu ứng zoom nhẹ khi hover */
+    transform: scale(1.05);
+}
+
+
+/* Định kiểu Badge SALE */
+.sale-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #fc644e;
+    /* Màu cam/coral (Giống nút CTA) */
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+
+/* Định kiểu Lớp phủ Hover (Cart và Heart) */
+.product-hover-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    /* Ban đầu trong suốt */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Đẩy icon xuống dưới */
+    opacity: 0;
+    /* Ẩn đi khi không hover */
+    transition: opacity 0.3s ease-in-out, background-color 0.3s;
+}
+
+.product-card:hover .product-hover-overlay {
+    /* Hiện overlay khi hover card */
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Lớp phủ mờ */
+}
+
+/* Định kiểu cho Icon/Nút hành động */
+.btn-action {
+    background-color: #fff;
+    color: #000;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 5px 20px 5px;
+    /* Margin bottom 20px để đặt icon ở đáy */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-action:hover {
+    background-color: #fc644e;
+    /* Hover sang màu cam */
+    color: #fff;
+}
+
+
+/* Định kiểu cho thẻ IMG bên trong nút hành động */
+.btn-action .icon-img {
+    width: 50%;
+    /* Thiết lập kích thước icon là 60% chiều rộng của nút (40px) */
+    height: 50%;
+    /* Tương đương 24px x 24px */
+    object-fit: contain;
+    /* Nếu icon là màu đen, bạn có thể dùng filter để đổi màu khi hover */
+    /* filter: invert(1); */
+}
+
+/* Nếu bạn muốn icon đổi màu khi hover: */
+.btn-action:hover .icon-img {
+    /* Ví dụ: Đổi màu đen sang trắng nếu icon của bạn là màu đen */
+    filter: brightness(0) invert(1);
+}
+
+/* Định kiểu Thông tin sản phẩm (Tên & Giá) */
+.product-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    font-size: 1rem;
+    color: #888;
+    font-weight: 400;
+}
