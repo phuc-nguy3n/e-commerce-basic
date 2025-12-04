@@ -393,3 +393,86 @@ footer .logo-text::after {
     color: #888;
     font-weight: 400;
 }
+
+/* ========================================================================= */
+/* COUNTDOWN BANNER STYLING */
+/* ========================================================================= */
+
+/*  Thiết lập nền Section và Màu chữ */
+.countdown-section {
+    background-color: #f8d4d9;
+    /* Màu nền hồng nhạt như trong mẫu */
+    color: #333;
+    /* Màu chữ chính */
+    padding: 80px 0;
+    /* Tăng padding trên/dưới để tạo không gian */
+}
+
+/* Định kiểu Badge giảm giá */
+.deal-badge {
+    background-color: #fff;
+    color: #555;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 5px;
+    letter-spacing: 0.5px;
+}
+
+/*  Tiêu đề lớn */
+.countdown-content-wrapper h1 {
+    color: #333;
+    /* Tiêu đề màu đen đậm */
+    font-size: 4rem;
+    /* Kích thước lớn */
+    margin-top: 20px;
+}
+
+/*  Định kiểu Bộ đếm ngược (Timer Box) */
+.countdown-timer {
+    /* Đã dùng justify-content-center trên HTML */
+    gap: 20px;
+    /* Khoảng cách giữa các box */
+}
+
+.timer-box {
+    background-color: #fff;
+    /* Nền trắng */
+    width: 110px;
+    /* Chiều rộng cố định */
+    height: 110px;
+    /* Chiều cao cố định (Tạo hình vuông) */
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Căn giữa nội dung theo chiều dọc */
+    align-items: center;
+    /* Căn giữa nội dung theo chiều ngang */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.timer-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.timer-label {
+    font-size: 0.85rem;
+    color: #888;
+    text-transform: lowercase;
+    margin-top: 5px;
+}
+
+/* Cập nhật nút CTA (Sử dụng lại kiểu đã có) */
+.btn-cta-primary {
+    /* Đảm bảo nút này hiện màu cam/coral */
+    background-color: #fc644e !important;
+    color: #fff;
+    border: none;
+    padding: 12px 40px;
+    font-size: 1.25rem;
+}
