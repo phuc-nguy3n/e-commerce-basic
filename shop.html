@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-commerce Project</title>
+
+    <!-- Font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/library.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="navbar navbar-expand-lg bg-white p-3 border-bottom">
+        <div class="container-fluid">
+          <a class="navbar-brand logo-text" href="#">FENSIE</a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="mainNavbar"
+          >
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./shop.html">Shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Faq</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+
+            <div class="d-flex align-items-center ms-lg-4">
+              <!-- Icon Tìm kiếm (Giữ nguyên) -->
+              <a href="#" class="nav-link text-dark me-3 icon-link">🔍</a>
+
+              <!-- Icon Giỏ hàng VÀ Dropdown Cart -->
+              <div class="position-relative cart-dropdown">
+                <!-- Icon Giỏ hàng (Trigger) -->
+                <a href="#" class="nav-link text-dark icon-link p-0">
+                  <!-- Icon Giỏ hàng -->
+                  <i class="fas fa-shopping-cart"></i>
+                  <!-- Bạn có thể thêm số lượng sản phẩm ở đây nếu cần -->
+                  <span class="cart-count">2</span>
+                </a>
+
+                <!-- MINI CART DROPDOWN -->
+                <div class="mini-cart shadow">
+                  <!-- Sản phẩm 1 -->
+                  <div
+                    class="cart-item d-flex align-items-center mb-3 pb-3 border-bottom"
+                  >
+                    <!-- Thay bằng ảnh sản phẩm thực tế của bạn -->
+                    <img
+                      src="./assets/images/products/product-1.jpg"
+                      alt="Ladies Bag"
+                      class="cart-item-img me-3"
+                    />
+                    <div class="cart-item-info flex-grow-1">
+                      <h6 class="mb-0">Ladies Bag</h6>
+                      <small class="text-secondary">1 x $1250.00</small>
+                    </div>
+                    <a href="#" class="btn-remove text-danger"
+                      ><i class="fas fa-times"></i
+                    ></a>
+                  </div>
+
+                  <!-- Sản phẩm 2 -->
+                  <div
+                    class="cart-item d-flex align-items-center mb-3 pb-3 border-bottom"
+                  >
+                    <!-- Thay bằng ảnh sản phẩm thực tế của bạn -->
+                    <img
+                      src="./assets/images/products/product-2.jpg"
+                      alt="Skinny Jeans"
+                      class="cart-item-img me-3"
+                    />
+                    <div class="cart-item-info flex-grow-1">
+                      <h6 class="mb-0">Skinny Jeans</h6>
+                      <small class="text-secondary">1 x $1250.00</small>
+                    </div>
+                    <a href="#" class="btn-remove text-danger"
+                      ><i class="fas fa-times"></i
+                    ></a>
+                  </div>
+
+                  <!-- Tổng cộng -->
+                  <div class="d-flex justify-content-between my-3 pt-2">
+                    <h5 class="fw-bold mb-0">Total</h5>
+                    <h5 class="fw-bold mb-0">$1799.00</h5>
+                  </div>
+
+                  <!-- Nút Hành động -->
+                  <div class="d-grid gap-2">
+                    <a href="#" class="btn btn-outline-dark">View Cart</a>
+                    <a href="#" class="btn btn-cta-primary">Checkout</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- ========================================================================= -->
+      <!-- 2. BREADCRUMB/BANNER -->
+      <!-- ========================================================================= -->
+      <section class="page-title-banner py-5" style="background-color: #f7f7f7">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h1 class="display-5 fw-bold mb-3">Shop</h1>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center mb-0">
+                  <li class="breadcrumb-item">
+                    <a
+                      href="index.html"
+                      class="text-secondary text-decoration-none"
+                      >Home</a
+                    >
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Shop
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- 3. MAIN CONTENT: SIDEBAR + PRODUCT GRID -->
+      <!-- ========================================================================= -->
+      <section class="shop-main-content py-5">
+        <div class="container">
+          <div class="row">
+            <!-- Cột 1: SIDEBAR (Bộ lọc) -->
+            <div class="col-lg-3">
+              <aside class="shop-sidebar p-3 border rounded">
+                <h4 class="fw-bold mb-4">Filters</h4>
+
+                <!-- Bộ lọc: Categories -->
+                <div class="filter-group mb-4 pb-3 border-bottom">
+                  <h5 class="fw-bold mb-3">Categories</h5>
+                  <ul class="list-unstyled filter-list">
+                    <li>
+                      <a
+                        href="#"
+                        class="text-secondary d-flex justify-content-between"
+                        >Men's Fashion <span>(120)</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-secondary d-flex justify-content-between"
+                        >Women's Fashion <span>(200)</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-secondary d-flex justify-content-between"
+                        >Kids Fashion <span>(80)</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-secondary d-flex justify-content-between"
+                        >Accessories <span>(50)</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-secondary d-flex justify-content-between"
+                        >Shoes <span>(30)</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Bộ lọc: Price Range (Chúng ta sẽ dùng một Slider đơn giản) -->
+                <div class="filter-group mb-4 pb-3 border-bottom">
+                  <h5 class="fw-bold mb-3">Price Range</h5>
+                  <input
+                    type="range"
+                    class="form-range"
+                    id="priceRange"
+                    min="0"
+                    max="1000"
+                    value="500"
+                  />
+                  <p class="text-secondary">
+                    Price: $<span id="minPrice">0</span> - $<span id="maxPrice"
+                      >500</span
+                    >
+                  </p>
+                  <button class="btn btn-sm btn-cta-primary w-100 mt-2">
+                    Filter
+                  </button>
+                </div>
+
+                <!-- Bộ lọc: Color -->
+                <div class="filter-group mb-4 pb-3 border-bottom">
+                  <h5 class="fw-bold mb-3">Color</h5>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span
+                      class="color-swatch bg-dark"
+                      data-color="black"
+                    ></span>
+                    <span
+                      class="color-swatch bg-danger"
+                      data-color="red"
+                    ></span>
+                    <span
+                      class="color-swatch"
+                      style="background-color: blue"
+                      data-color="blue"
+                    ></span>
+                    <span
+                      class="color-swatch"
+                      style="background-color: green"
+                      data-color="green"
+                    ></span>
+                    <span
+                      class="color-swatch bg-white border"
+                      data-color="white"
+                    ></span>
+                  </div>
+                </div>
+              </aside>
+            </div>
+
+            <!-- Cột 2: PRODUCT GRID (Lưới sản phẩm) -->
+            <div class="col-lg-9">
+              <!-- Thanh Sắp xếp và Kết quả -->
+              <div
+                class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom"
+              >
+                <p class="text-secondary mb-0">Showing 1 to 16 of 24 Results</p>
+                <div class="d-flex align-items-center">
+                  <label for="sortSelect" class="me-2 text-secondary"
+                    >Sort by:</label
+                  >
+                  <select
+                    class="form-select form-select-sm"
+                    id="sortSelect"
+                    style="width: auto"
+                  >
+                    <option selected>Latest</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Lưới sản phẩm (Tái sử dụng product-card từ trang chủ) -->
+              <div class="row g-4 product-grid">
+                <!-- SẢN PHẨM MẪU 1 -->
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  <!-- Cấu trúc Card sản phẩm -->
+                  <div class="product-card">
+                    <div class="product-image-container">
+                      <img
+                        src="./assets/images/products/product-1.jpg"
+                        class="img-fluid"
+                        alt="Floral Kirby Dress"
+                      />
+                      <span class="sale-badge">SALE</span>
+                      <div class="product-hover-overlay">
+                        <a href="#" class="btn-action"
+                          ><i class="fas fa-shopping-cart"></i
+                        ></a>
+                        <a href="#" class="btn-action"
+                          ><i class="fas fa-heart"></i
+                        ></a>
+                      </div>
+                    </div>
+
+                    <div class="product-info text-center mt-3">
+                      <h4 class="product-name">Floral Kirby</h4>
+                      <p class="product-price">$329.10</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SẢN PHẨM MẪU 2 -->
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  <div class="product-card">
+                    <div class="product-image-container">
+                      <img
+                        src="./assets/images/products/product-2.jpg"
+                        class="img-fluid"
+                        alt="Open Knit Sweater"
+                      />
+                      <div class="product-hover-overlay">
+                        <a href="#" class="btn-action"
+                          ><i class="fas fa-shopping-cart"></i
+                        ></a>
+                        <a href="#" class="btn-action"
+                          ><i class="fas fa-heart"></i
+                        ></a>
+                      </div>
+                    </div>
+                    <div class="product-info text-center mt-3">
+                      <h4 class="product-name">Open Knit Switer</h4>
+                      <p class="product-price">$29.10</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Cần thêm ít nhất 4-6 sản phẩm mẫu nữa để lấp đầy grid -->
+              </div>
+
+              <!-- Phân trang -->
+              <nav class="mt-5 d-flex justify-content-center">
+                <ul class="pagination">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#">Previous</a>
+                  </li>
+                  <li class="page-item active">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-3">
+      <div class="container-fluid">
+        <div class="footer-container row py-5">
+          <div class="col-lg-3 col-12">
+            <a class="navbar-brand logo-text" href="#">FENSIE</a>
+
+            <p class="text-secondary mt-3 mb-4">
+              Iste dolores iure quis excepturi, deserunt praesentium.
+            </p>
+
+            <p class="text-dark mb-1">
+              <span class="fw-bold">Location : </span> North South ,USA
+            </p>
+
+            <p class="text-dark mb-4">
+              <span class="fw-bold">Support Email : </span>
+              <a href="mailto:support@email.com" class="text-secondary"
+                >support@email.com</a
+              >
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-12">
+            <h6 class="fw-bold mb-3">Category</h6>
+
+            <ul class="list-unstyled footer-links">
+              <li>
+                <a href="#" class="text-secondary d-block mb-2"
+                  >Men's Fashion</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2"
+                  >Women's Fashion</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2">Kids Fashion</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2">Accessories</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2"
+                  >Shoe Collection</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-12">
+            <h6 class="fw-bold mb-3">Useful Link</h6>
+
+            <ul class="list-unstyled footer-links">
+              <li>
+                <a href="#" class="text-secondary d-block mb-2">News & Tips</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2">About Us</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2">Support</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2">Our Shop</a>
+              </li>
+              <li>
+                <a href="#" class="text-secondary d-block mb-2">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-12">
+            <h6 class="fw-bold mb-3">Opening Hours</h6>
+
+            <ul class="list-unstyled footer-hours">
+              <li class="d-flex justify-content-between text-secondary mb-2">
+                <span>Monday-Friday</span>
+                <span>8.00-20.00</span>
+              </li>
+              <li class="d-flex justify-content-between text-secondary mb-2">
+                <span>Saturday</span>
+                <span>10.00-20.00</span>
+              </li>
+              <li class="d-flex justify-content-between text-secondary mb-2">
+                <span>Sunday</span>
+                <span>12-20.00</span>
+              </li>
+            </ul>
+
+            <p class="mt-4 fw-bold">Call Now : +(5)(305) 785-0437</p>
+          </div>
+        </div>
+
+        <div class="row border-top">
+          <div class="col-md-6 col-12 text-center text-md-start">
+            <p class="text-secondary mb-0">
+              @ Copyright Reserved to FENSIE & made by
+              <a href="#" class="text-secondary fw-bold text-decoration-none"
+                >Funkie</a
+              >
+            </p>
+          </div>
+
+          <div class="col-md-6 col-12 text-center text-md-end">
+            <a href="#" class="text-secondary me-3 text-decoration-none"
+              >Privacy Policy</a
+            >
+            <a href="#" class="text-secondary me-3 text-decoration-none"
+              >Terms & Conditions</a
+            >
+            <a href="#" class="text-secondary me-3 text-decoration-none"
+              >Cookie Policy</a
+            >
+            <a href="#" class="text-secondary text-decoration-none"
+              >Terms of Sale</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/4a7da8863e.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Custom JS -->
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

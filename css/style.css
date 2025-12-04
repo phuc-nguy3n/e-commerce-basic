@@ -598,3 +598,67 @@ footer .logo-text::after {
     border-radius: 50%;
     padding: 2px 7px;
 }
+
+/* ========================================================================= */
+/* SHOP PAGE SIDEBAR STYLING */
+/* ========================================================================= */
+
+.shop-main-content .shop-sidebar {
+    position: sticky;
+    /* Giữ sidebar cố định khi cuộn */
+    top: 100px;
+    /* Vị trí bắt đầu dính */
+}
+
+/* Định kiểu cho danh sách bộ lọc */
+.filter-list a {
+    text-decoration: none;
+    padding: 5px 0;
+    display: block;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.filter-list a:hover {
+    color: #fc644e !important;
+}
+
+.filter-list span {
+    font-weight: 500;
+}
+
+/* Định kiểu cho Color Swatch */
+.color-swatch {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.color-swatch:hover,
+.color-swatch.active {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 3px #fc644e;
+    /* Viền sáng màu cam khi chọn/hover */
+}
+
+/* Định kiểu lại Pagination */
+.pagination .page-link {
+    color: #333;
+    border-radius: 5px !important;
+    margin: 0 5px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #fc644e;
+    border-color: #fc644e;
+    color: #fff;
+}
+
+.pagination .page-link:hover {
+    background-color: #f7f7f7;
+    color: #fc644e;
+}
