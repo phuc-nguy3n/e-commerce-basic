@@ -67,8 +67,72 @@
             </ul>
 
             <div class="d-flex align-items-center ms-lg-4">
+              <!-- Icon Tìm kiếm (Giữ nguyên) -->
               <a href="#" class="nav-link text-dark me-3 icon-link">🔍</a>
-              <a href="#" class="nav-link text-dark icon-link">🛒</a>
+
+              <!-- Icon Giỏ hàng VÀ Dropdown Cart -->
+              <div class="position-relative cart-dropdown">
+                <!-- Icon Giỏ hàng (Trigger) -->
+                <a href="#" class="nav-link text-dark icon-link p-0">
+                  <!-- Icon Giỏ hàng -->
+                  <i class="fas fa-shopping-cart"></i>
+                  <!-- Bạn có thể thêm số lượng sản phẩm ở đây nếu cần -->
+                  <span class="cart-count">2</span>
+                </a>
+
+                <!-- MINI CART DROPDOWN -->
+                <div class="mini-cart shadow">
+                  <!-- Sản phẩm 1 -->
+                  <div
+                    class="cart-item d-flex align-items-center mb-3 pb-3 border-bottom"
+                  >
+                    <!-- Thay bằng ảnh sản phẩm thực tế của bạn -->
+                    <img
+                      src="./assets/images/products/product-1.jpg"
+                      alt="Ladies Bag"
+                      class="cart-item-img me-3"
+                    />
+                    <div class="cart-item-info flex-grow-1">
+                      <h6 class="mb-0">Ladies Bag</h6>
+                      <small class="text-secondary">1 x $1250.00</small>
+                    </div>
+                    <a href="#" class="btn-remove text-danger"
+                      ><i class="fas fa-times"></i
+                    ></a>
+                  </div>
+
+                  <!-- Sản phẩm 2 -->
+                  <div
+                    class="cart-item d-flex align-items-center mb-3 pb-3 border-bottom"
+                  >
+                    <!-- Thay bằng ảnh sản phẩm thực tế của bạn -->
+                    <img
+                      src="./assets/images/products/product-2.jpg"
+                      alt="Skinny Jeans"
+                      class="cart-item-img me-3"
+                    />
+                    <div class="cart-item-info flex-grow-1">
+                      <h6 class="mb-0">Skinny Jeans</h6>
+                      <small class="text-secondary">1 x $1250.00</small>
+                    </div>
+                    <a href="#" class="btn-remove text-danger"
+                      ><i class="fas fa-times"></i
+                    ></a>
+                  </div>
+
+                  <!-- Tổng cộng -->
+                  <div class="d-flex justify-content-between my-3 pt-2">
+                    <h5 class="fw-bold mb-0">Total</h5>
+                    <h5 class="fw-bold mb-0">$1799.00</h5>
+                  </div>
+
+                  <!-- Nút Hành động -->
+                  <div class="d-grid gap-2">
+                    <a href="#" class="btn btn-outline-dark">View Cart</a>
+                    <a href="#" class="btn btn-cta-primary">Checkout</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
