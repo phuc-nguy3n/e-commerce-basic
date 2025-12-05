@@ -147,7 +147,7 @@
       <section class="breadcrumb-bar py-3" style="background-color: #f7f7f7">
         <div class="container">
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0">
+            <ol class="breadcrumb mb-0" id="productBreadcrumb">
               <li class="breadcrumb-item">
                 <a href="index.html" class="text-secondary text-decoration-none"
                   >Home</a
@@ -158,9 +158,9 @@
                   >Shop</a
                 >
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
+              <!-- <li class="breadcrumb-item active" aria-current="page">
                 Floral Kirby Dress
-              </li>
+              </li> -->
             </ol>
           </nav>
         </div>
@@ -170,276 +170,7 @@
       <!-- 3. PRODUCT DETAIL SECTION -->
       <!-- ========================================================================= -->
       <section class="product-detail-section py-5">
-        <div class="container">
-          <div class="row gx-5">
-            <!-- Cột 1 (lg-5): PRODUCT GALLERY -->
-            <div class="col-lg-5 mb-5 mb-lg-0">
-              <div class="product-gallery">
-                <!-- Ảnh Chính (Main Image) -->
-                <div
-                  class="main-image mb-4 border rounded"
-                  style="padding: 20px"
-                >
-                  <img
-                    src="./assets/images/products/product-1.jpg"
-                    class="img-fluid w-100"
-                    alt="Main Product Image"
-                  />
-                </div>
-
-                <!-- Ảnh Thumbnails (Gallery) -->
-                <div class="row g-3">
-                  <div class="col-3">
-                    <img
-                      src="./assets/images/products/product-1.jpg"
-                      class="img-thumbnail w-100 p-2 active-thumb"
-                      alt="Thumbnail 1"
-                    />
-                  </div>
-                  <div class="col-3">
-                    <img
-                      src="./assets/images/products/product-2.jpg"
-                      class="img-thumbnail w-100 p-2"
-                      alt="Thumbnail 2"
-                    />
-                  </div>
-                  <div class="col-3">
-                    <img
-                      src="./assets/images/products/product-3.jpg"
-                      class="img-thumbnail w-100 p-2"
-                      alt="Thumbnail 3"
-                    />
-                  </div>
-                  <div class="col-3">
-                    <img
-                      src="./assets/images/products/product-4.jpg"
-                      class="img-thumbnail w-100 p-2"
-                      alt="Thumbnail 4"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Cột 2 (lg-7): PRODUCT INFO & ACTIONS -->
-            <div class="col-lg-7">
-              <div class="product-info-details">
-                <h1 class="display-5 fw-bold mb-3">Floral Kirby Dress</h1>
-
-                <!-- Đánh giá và SKU -->
-                <div class="d-flex align-items-center mb-3">
-                  <div class="rating text-warning me-3">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <span class="ms-2 text-secondary">(4 Reviews)</span>
-                  </div>
-                  <span class="text-secondary">SKU: PD19010</span>
-                </div>
-
-                <!-- Giá -->
-                <div class="price-section mb-4">
-                  <span class="current-price fs-2 fw-bold me-3 text-danger"
-                    >$329.10</span
-                  >
-                  <span
-                    class="old-price text-secondary text-decoration-line-through fs-5"
-                    >$420.00</span
-                  >
-                  <span class="sale-percent text-success fw-bold ms-2"
-                    >21% Off</span
-                  >
-                </div>
-
-                <!-- Mô tả ngắn -->
-                <p class="mb-4 text-secondary">
-                  Dolores sed ut tempora sit amet, consectetur adipiscing elit.
-                  Aliquam interdum diam vitae imperdiet bibendum. Nunc nec
-                  elementum ipsum. Aliquam interdum diam vitae imperdiet
-                  bibendum. Nunc nec elementum ipsum.
-                </p>
-
-                <!-- Tùy chọn Kích thước -->
-                <div class="product-options mb-4 pb-4 border-bottom">
-                  <h6 class="fw-bold mb-2">
-                    Size: <span class="selected-size text-dark">M</span>
-                  </h6>
-                  <div class="d-flex gap-2">
-                    <span
-                      class="size-swatch border px-3 py-1 rounded active-option"
-                      data-size="S"
-                      >S</span
-                    >
-                    <span
-                      class="size-swatch border px-3 py-1 rounded"
-                      data-size="M"
-                      >M</span
-                    >
-                    <span
-                      class="size-swatch border px-3 py-1 rounded"
-                      data-size="L"
-                      >L</span
-                    >
-                    <span
-                      class="size-swatch border px-3 py-1 rounded"
-                      data-size="XL"
-                      >XL</span
-                    >
-                  </div>
-                </div>
-
-                <!-- Hành động: Số lượng và Nút -->
-                <div class="d-flex align-items-center mb-4">
-                  <!-- Bộ điều chỉnh số lượng -->
-                  <div
-                    class="input-group quantity-input me-3"
-                    style="width: 150px"
-                  >
-                    <button
-                      class="btn btn-outline-secondary"
-                      type="button"
-                      id="button-addon1"
-                    >
-                      -
-                    </button>
-                    <input
-                      type="text"
-                      class="form-control text-center"
-                      value="1"
-                      readonly
-                    />
-                    <button
-                      class="btn btn-outline-secondary"
-                      type="button"
-                      id="button-addon2"
-                    >
-                      +
-                    </button>
-                  </div>
-
-                  <!-- Nút Thêm vào giỏ hàng -->
-                  <button class="btn btn-cta-primary btn-lg me-3">
-                    <i class="fas fa-shopping-cart me-2"></i> Add to Cart
-                  </button>
-
-                  <!-- Nút Thêm vào Yêu thích -->
-                  <button class="btn btn-outline-secondary btn-lg btn-wishlist">
-                    <i class="far fa-heart"></i>
-                  </button>
-                </div>
-
-                <!-- Social Share -->
-                <div class="social-share mt-4 pt-4 border-top">
-                  <span class="fw-bold me-3">Share on:</span>
-                  <a href="#" class="text-secondary me-3"
-                    ><i class="fab fa-facebook-f"></i
-                  ></a>
-                  <a href="#" class="text-secondary me-3"
-                    ><i class="fab fa-twitter"></i
-                  ></a>
-                  <a href="#" class="text-secondary"
-                    ><i class="fab fa-instagram"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- PRODUCT TABS: Description, Reviews -->
-          <div class="row mt-5">
-            <div class="col-12">
-              <ul class="nav nav-tabs product-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                  <button
-                    class="nav-link active"
-                    id="description-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#description"
-                    type="button"
-                    role="tab"
-                    aria-controls="description"
-                    aria-selected="true"
-                  >
-                    Description
-                  </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button
-                    class="nav-link"
-                    id="reviews-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#reviews"
-                    type="button"
-                    role="tab"
-                    aria-controls="reviews"
-                    aria-selected="false"
-                  >
-                    Reviews (4)
-                  </button>
-                </li>
-              </ul>
-              <div
-                class="tab-content border border-top-0 p-4"
-                id="myTabContent"
-              >
-                <!-- Tab 1: Description -->
-                <div
-                  class="tab-pane fade show active"
-                  id="description"
-                  role="tabpanel"
-                  aria-labelledby="description-tab"
-                >
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </p>
-                  <ul>
-                    <li>Material: 100% Cotton</li>
-                    <li>Care: Machine wash cold</li>
-                    <li>Origin: Made in Vietnam</li>
-                  </ul>
-                </div>
-                <!-- Tab 2: Reviews -->
-                <div
-                  class="tab-pane fade"
-                  id="reviews"
-                  role="tabpanel"
-                  aria-labelledby="reviews-tab"
-                >
-                  <h5 class="fw-bold mb-3">Customer Reviews</h5>
-                  <!-- Review 1 -->
-                  <div class="review-item mb-3 pb-3 border-bottom">
-                    <div
-                      class="d-flex justify-content-between align-items-start"
-                    >
-                      <div>
-                        <h6 class="fw-bold mb-0">Jane Doe</h6>
-                        <small class="text-secondary">October 25, 2024</small>
-                      </div>
-                      <div class="rating text-warning">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i
-                        ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                        ><i class="fas fa-star"></i>
-                      </div>
-                    </div>
-                    <p class="mt-2 mb-0">
-                      The fabric is amazing and the fit is perfect. Highly
-                      recommend!
-                    </p>
-                  </div>
-                  <!-- ... Thêm các review khác ... -->
-                  <h5 class="fw-bold mt-4">Write a Review</h5>
-                  <!-- Form đánh giá sẽ được thêm ở đây -->
-                  <p class="text-secondary">Review form goes here...</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="container" id="productDetailContainer"></div>
       </section>
 
       <!-- ========================================================================= -->
@@ -648,6 +379,7 @@
     ></script>
 
     <!-- Custom JS -->
+    <script type="module" src="./js/productDetail.js"></script>
     <script type="module" src="js/app.js"></script>
   </body>
 </html>
