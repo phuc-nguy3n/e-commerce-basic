@@ -23,6 +23,7 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+
 }
 
 /* Đảm bảo media elements (img, video...) được responsive */
@@ -276,6 +277,11 @@ footer .logo-text::after {
 /* NEW ARRIVALS / PRODUCT CARD STYLING */
 /* ========================================================================= */
 
+.product-link {
+    display: block;
+    height: 100%;
+}
+
 /* Định kiểu Khu vực chứa Ảnh */
 .product-image-container {
     background-color: #f7f7f7;
@@ -299,7 +305,8 @@ footer .logo-text::after {
 
 
 /* Định kiểu Badge SALE */
-.sale-badge {
+.sale-badge,
+.new-badge {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -330,6 +337,7 @@ footer .logo-text::after {
     opacity: 0;
     /* Ẩn đi khi không hover */
     transition: opacity 0.3s ease-in-out, background-color 0.3s;
+    pointer-events: none
 }
 
 .product-card:hover .product-hover-overlay {

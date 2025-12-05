@@ -77,7 +77,8 @@ function setupEventListeners() {
 document.addEventListener("DOMContentLoaded", () => {
   // 2. KHỞI CHẠY ỨNG DỤNG
   // Đảm bảo hàm renderProducts được gọi trước để các nút tồn tại trong DOM
-  renderProducts(products);
+  renderProducts(products, "newArrivalsContainer");
+  renderProducts(products, "shopContainer");
 
   // Sau khi sản phẩm được hiển thị, thiết lập trình lắng nghe
   setupEventListeners();
