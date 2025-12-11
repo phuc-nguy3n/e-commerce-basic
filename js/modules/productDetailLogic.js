@@ -1,3 +1,5 @@
+import { addItemToCart as addToCart } from "./cart.js";
+
 /**
  * Render chi tiết sản phẩm vào container chính.
  * @param {Object} product - Đối tượng sản phẩm hiện tại.
@@ -195,6 +197,95 @@ export function renderProductDetail(product) {
 
     // Thêm logic tương tác cho gallery và quantity controls ngay sau khi render
     addInteractionListeners(product);
+  }
+}
+
+/**
+ * Thêm các listener cho gallery, bộ điều khiển số lượng và nút Add to Cart.
+ * @param {Object} product - Đối tượng sản phẩm.
+ */
+function addInteractionListeners(product) {
+  // Lấy các element cần thiết
+  const quantityInput = document.getElementById("productQuantity");
+  const increaseButton = document.getElementById("increaseQuantity");
+  const decreaseButton = document.getElementById("decreaseQuantity");
+  const sizeOptions = document.querySelectorAll("#sizeOptions .size-swatch");
+  const selectedSizeDisplay = document.getElementById("selectedSize");
+  const addToCartButton = document.getElementById("addToCartButton");
+  const mainImage = document.getElementById("mainProductImage");
+  const thumbnails = document.querySelectorAll("#productThumbnails img");
+
+  let selectedSize = selectedSizeDisplay
+    ? selectedSizeDisplay.textContent
+    : "S";
+
+  // 1. Gallery Interaction (Giữ nguyên)
+  if (mainImage && thumbnails.length > 0) {
+    thumbnails.forEach((thumb) => {
+      thumb.addEventListener("click", function () {
+        mainImage.src = this.src;
+        thumbnails.forEach((t) => t.classList.remove("active-thumb"));
+        this.classList.add("active-thumb");
+      });
+    });
+  }
+
+  // =========================================================================
+  // 2. LOGIC TĂNG/GIẢM SỐ LƯỢNG SẢN PHẨM CHI TIẾT
+  // =========================================================================
+  if (quantityInput && increaseButton && decreaseButton) {
+    const updateQuantity = (change) => {
+      let currentVal = parseInt(quantityInput.value);
+      let newVal = currentVal + change;
+
+      // Đảm bảo số lượng không nhỏ hơn 1
+      if (newVal >= 1) {
+        quantityInput.value = newVal;
+      } else {
+        quantityInput.value = 1; // Giữ ở mức tối thiểu là 1
+      }
+    };
+
+    // GẮN LISTENER CHO NÚT TĂNG
+    increaseButton.addEventListener("click", () => updateQuantity(1));
+
+    // GẮN LISTENER CHO NÚT GIẢM
+    decreaseButton.addEventListener("click", () => updateQuantity(-1));
+  }
+  // =========================================================================
+
+  // 3. Size Selection (Giữ nguyên)
+  if (sizeOptions.length > 0) {
+    sizeOptions.forEach((option) => {
+      option.addEventListener("click", function () {
+        sizeOptions.forEach((o) => o.classList.remove("active-option"));
+        this.classList.add("active-option");
+
+        selectedSize = this.getAttribute("data-size");
+        if (selectedSizeDisplay) {
+          selectedSizeDisplay.textContent = selectedSize;
+        }
+      });
+    });
+  }
+
+  // 4. Add to Cart Logic (Gọi module giỏ hàng)
+  if (addToCartButton) {
+    addToCartButton.addEventListener("click", () => {
+      const quantity = parseInt(quantityInput.value);
+
+      // Gọi hàm thêm vào giỏ hàng với Quantity và Size đã chọn
+      addToCart(product, quantity, selectedSize);
+
+      // Hiệu ứng lắc
+      const cartIcon = document.querySelector(".fa-shopping-cart").closest("a");
+      if (cartIcon) {
+        cartIcon.classList.add("shake-animation");
+        setTimeout(() => {
+          cartIcon.classList.remove("shake-animation");
+        }, 500);
+      }
+    });
   }
 }
 
