@@ -1,85 +1,58 @@
 // js/app.js - File Khởi động Ứng dụng (Entry Point)
 
 // 1. IMPORT CÁC MODULE CẦN THIẾT
-import { products } from "./data.js"; // Named Import cho dữ liệu
-import renderProducts from "./modules/product.js"; // Default Import cho hàm hiển thị
+import "./modules/componentLoader.js"; // Tự động tải mini-cart.html
+import { products } from "./data.js";
+import renderProducts from "./modules/product.js";
 import {
+  initCart, // <-- Import hàm khởi tạo
   addItemToCart,
   removeItemFromCart,
-  updateItemQuantity,
-} from "./modules/cart.js"; // Named Import cho chức năng Giỏ hàng
+} from "./modules/cart.js";
 
 /**
  * Thiết lập các trình lắng nghe sự kiện (Event Listeners) cho các nút tương tác.
  */
 function setupEventListeners() {
-  // Lấy tất cả các nút 'Thêm vào giỏ'
+  // A. Lắng nghe sự kiện cho các nút "Add to Cart" trên thẻ sản phẩm
   const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
-
-  // Lặp qua từng nút và gắn sự kiện click
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
-      // Lấy ID sản phẩm từ thuộc tính data-id
       const productId = parseInt(event.currentTarget.dataset.id);
-
-      // Gọi hàm logic từ module Giỏ hàng
       addItemToCart(productId);
     });
   });
 
-  // xóa item
-  // Lấy ra phần tử cha (Delegation Point). Giả sử ID là 'cart-list'
-  const cartListContainer = document.getElementById("cart-list");
-
-  if (cartListContainer) {
-    cartListContainer.addEventListener("click", (event) => {
-      // Kiểm tra xem event.target CÓ PHẢI là nút xóa (.remove-item-btn) không
-      if (event.target.classList.contains("remove-item-btn")) {
-        // Lấy ID sản phẩm từ data-id của nút Xóa
-        const productId = parseInt(event.target.dataset.id);
-
-        // Gọi hàm logic xóa
-        removeItemFromCart(productId);
-
-        // Ngăn chặn hành vi mặc định (ví dụ: nếu nút là thẻ <a>)
-        event.preventDefault();
-      }
-
-      // Logic mới cho nút TĂNG SỐ LƯỢNG
-      else if (event.target.classList.contains("increase-qty-btn")) {
-        const productId = parseInt(event.target.dataset.id);
-        // Gọi hàm updateItemQuantity với change là +1
-        // CODE BẠN VÀO ĐÂY
-        updateItemQuantity(productId, 1);
-      }
-
-      // Logic cho nút GIẢM SỐ LƯỢNG (.decrease-qty-btn)
-      else if (event.target.classList.contains("decrease-qty-btn")) {
-        const productId = parseInt(event.target.dataset.id);
-        // Gọi hàm updateItemQuantity với change là -1
-        // CODE BẠN VÀO ĐÂY
-        updateItemQuantity(productId, -1);
-      }
-
-      // (Optional) Ngăn chặn hành vi mặc định
-      if (
-        event.target.classList.contains("remove-item-btn") ||
-        event.target.classList.contains("increase-qty-btn") ||
-        event.target.classList.contains("decrease-qty-btn")
-      ) {
-        event.preventDefault();
-      }
-    });
+  // B. Lắng nghe sự kiện XÓA sản phẩm từ MINI-CART (Sử dụng Event Delegation)
+  const cartDropdown = document.querySelector('.cart-dropdown');
+  if (cartDropdown) {
+      cartDropdown.addEventListener('click', (event) => {
+          // Kiểm tra xem phần tử được click có phải là nút xóa hoặc icon bên trong nó không
+          const removeButton = event.target.closest('.btn-remove');
+          if (removeButton) {
+              event.preventDefault(); // Ngăn hành vi mặc định của thẻ <a>
+              const productId = parseInt(removeButton.dataset.id);
+              if (productId) {
+                  removeItemFromCart(productId);
+              }
+          }
+      });
   }
 }
 
-// Đảm bảo DOM đã tải xong trước khi thiết lập sự kiện
-document.addEventListener("DOMContentLoaded", () => {
-  // 2. KHỞI CHẠY ỨNG DỤNG
-  // Đảm bảo hàm renderProducts được gọi trước để các nút tồn tại trong DOM
+// Hàm khởi động chính của ứng dụng
+function initializeApp() {
+  // 1. Hiển thị sản phẩm (nếu có container trên trang)
   renderProducts(products, "newArrivalsContainer");
   renderProducts(products, "shopContainer");
 
-  // Sau khi sản phẩm được hiển thị, thiết lập trình lắng nghe
+  // 2. Khởi tạo giỏ hàng (tải dữ liệu từ localStorage và render lần đầu)
+  // Phải được gọi SAU KHI component loader đã chạy xong (DOMContentLoaded đảm bảo điều này)
+  initCart();
+  
+  // 3. Thiết lập các trình lắng nghe sự kiện cho các nút
   setupEventListeners();
-});
+}
+
+// Đảm bảo DOM đã tải xong hoàn toàn trước khi khởi chạy ứng dụng.
+document.addEventListener("DOMContentLoaded", initializeApp);

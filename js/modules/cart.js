@@ -1,172 +1,149 @@
 import { products } from "../data.js";
 
-// Biến trạng thái giỏ hàng (sẽ được tải từ Local Storage)
+// Trạng thái giỏ hàng, được quản lý nội bộ trong module
 let cart = [];
+const CART_STORAGE_KEY = "ecom_cart_items";
 
-const CART_STORAGE_KEY = "ecom_cart_items"; // 💡 Nên dùng biến hằng số để tránh lỗi chính tả
+// =========================================================================
+// HÀM NỘI BỘ (Private Functions)
+// =========================================================================
 
 /**
- * 💾 Lưu trạng thái giỏ hàng hiện tại vào Local Storage.
+ * Render (vẽ) lại toàn bộ giao diện mini-cart dựa trên trạng thái `cart` hiện tại.
  */
-export function saveCart() {
-  // 1. Chuyển đổi mảng 'cart' (Array) thành chuỗi JSON (String)
-  const cartDataString = JSON.stringify(cart);
-
-  // 2. Lưu chuỗi dữ liệu đó vào Local Storage
-  localStorage.setItem(CART_STORAGE_KEY, cartDataString);
-
-  console.log("Giỏ hàng đã được lưu vào Local Storage.");
-}
-
-export function loadCart() {
-  // 1. Lấy chuỗi dữ liệu giỏ hàng từ Local Storage
-  const cartDataString = localStorage.getItem(CART_STORAGE_KEY);
-
-  // 2. Xử lý dữ liệu
-  // Nếu cartDataString là NULL (chưa có gì được lưu), chúng ta sẽ trả về mảng rỗng []
-  // Nếu có dữ liệu, chúng ta dùng JSON.parse để chuyển đổi.
-  if (cartDataString) {
-    // CHUYỂN ĐỔI CHUỖI JSON SANG MẢNG JS BẰNG PHƯƠNG THỨC JSON.parse()
-    cart = JSON.parse(cartDataString);
-  } else {
-    // TRẢ VỀ MẢNG RỖNG NẾU KHÔNG CÓ DỮ LIỆU
-    cart = [];
+function renderMiniCart() {
+  const miniCartComponent = document.querySelector('.mini-cart');
+  if (!miniCartComponent) {
+    // Nếu component chưa được tải, không làm gì cả.
+    // Việc này tránh lỗi xảy ra khi cart.js thực thi trước componentLoader.
+    return;
   }
 
-  return cart;
+  // Lấy các element con bên trong component
+  const itemsContainer = miniCartComponent.querySelector('.mini-cart-items-container');
+  const cartFooter = miniCartComponent.querySelector('.mini-cart-footer');
+  const totalElement = miniCartComponent.querySelector('#mini-cart-total');
+  const cartCountBadge = document.querySelector('.cart-count'); // Badge số lượng trên icon
+
+  // Reset container
+  itemsContainer.innerHTML = '';
+
+  if (cart.length === 0) {
+    // 1. Nếu giỏ hàng trống
+    itemsContainer.innerHTML = '<p class="text-center text-secondary my-3">Giỏ hàng của bạn đang trống</p>';
+    cartFooter.style.display = 'none'; // Ẩn footer
+    if (cartCountBadge) cartCountBadge.textContent = '0';
+  } else {
+    // 2. Nếu giỏ hàng có sản phẩm
+    // Tạo HTML cho từng sản phẩm
+    cart.forEach(item => {
+      const itemHTML = `
+        <div class="cart-item d-flex align-items-center mb-3 pb-3 border-bottom" data-id="${item.id}">
+          <img src="${item.image}" alt="${item.name}" class="cart-item-img me-3" />
+          <div class="cart-item-info flex-grow-1">
+            <h6 class="mb-0 fs-6">${item.name}</h6>
+            <small class="text-secondary">${item.quantity} &times; $${item.price.toFixed(2)}</small>
+          </div>
+          <a href="#" class="btn-remove text-danger" data-id="${item.id}">
+             <i class="fas fa-times" data-id="${item.id}"></i>
+          </a>
+        </div>
+      `;
+      itemsContainer.insertAdjacentHTML('beforeend', itemHTML);
+    });
+
+    // Tính toán và cập nhật tổng tiền
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    totalElement.textContent = `$${total.toFixed(2)}`;
+    cartFooter.style.display = 'block'; // Hiển thị footer
+
+    // Cập nhật badge số lượng
+    const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+    if (cartCountBadge) cartCountBadge.textContent = totalQuantity;
+  }
 }
 
-// 💡 Hàm khởi tạo giỏ hàng: Cần gọi loadCart() ngay lập tức
-loadCart();
 
+/**
+ * Lưu trạng thái giỏ hàng vào localStorage.
+ */
+function saveCart() {
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+}
+
+/**
+ * Tải giỏ hàng từ localStorage.
+ */
+function loadCart() {
+  const cartDataString = localStorage.getItem(CART_STORAGE_KEY);
+  cart = cartDataString ? JSON.parse(cartDataString) : [];
+}
+
+// =========================================================================
+// HÀM CÔNG KHAI (Public API) - Được export ra ngoài
+// =========================================================================
+
+/**
+ * Khởi tạo giỏ hàng: tải dữ liệu và render lần đầu.
+ * Hàm này sẽ được gọi từ app.js
+ */
+export function initCart() {
+  loadCart();
+  renderMiniCart();
+}
+
+/**
+ * Thêm một sản phẩm vào giỏ hàng hoặc tăng số lượng nếu đã có.
+ * @param {number} productId - ID của sản phẩm cần thêm.
+ */
 export function addItemToCart(productId) {
-  // 1. Tìm kiếm sản phẩm trong giỏ hàng hiện tại (cart)
-  const existingItem = cart.find((item) => item.id === productId);
+  const productData = products.find(p => p.id === productId);
+  if (!productData) return;
 
-  // 2. Quyết định: Cập nhật hay Thêm mới?
+  const existingItem = cart.find(item => item.id === productId);
+
   if (existingItem) {
-    // Nếu đã có: Tăng số lượng
     existingItem.quantity++;
   } else {
-    // Nếu chưa có: Thêm sản phẩm mới vào giỏ
-    const productDetails = products.find((product) => product.id === productId);
-
-    // Đối tượng mới tối thiểu cần có ID, và số lượng (quantity: 1)
     cart.push({
-      ...productDetails,
-      // Cần thêm các thuộc tính khác như name, price, v.v. để hiển thị
+      id: productData.id,
+      name: productData.name,
+      price: productData.price,
+      image: productData.image,
       quantity: 1,
     });
   }
 
-  // 3. Lưu trạng thái mới vào Local Storage
   saveCart();
-  updateCartDisplay();
+  renderMiniCart();
 }
-
-/**
- * Cập nhật giao diện Giỏ hàng (số lượng item).
- */
-export function updateCartDisplay() {
-  //  Tính tổng số lượng sản phẩm
-  const totalQuantity = cart.reduce((accumulator, item) => {
-    return accumulator + item.quantity;
-  }, 0);
-
-  // Cập nhật danh sách sản phẩm trong giỏ hàng (Giả sử có element id='cart-list')
-  const cartListContainer = document.getElementById("cart-list");
-  if (cartListContainer) {
-    cartListContainer.innerHTML = renderCartItems();
-  }
-
-  // Cập nhật giao diện (Giả sử có element id='cart-count')
-  const cartCountElement = document.getElementById("cart-count");
-  if (cartCountElement) {
-    cartCountElement.textContent = totalQuantity;
-  }
-
-  // Cập nhật tổng tiền
-  const cartTotalElement = document.getElementById("cart-total");
-  if (cartTotalElement) {
-    const cartTotal = cart.reduce((accumulator, item) => {
-      // Giá trị cần trả về là: TỔNG TIỀN ĐÃ TÍCH LŨY + (item.price * item.quantity)
-      return accumulator + item.price * item.quantity;
-    }, 0);
-    cartTotalElement.textContent = cartTotal.toLocaleString("vi-VN") + " VND";
-  }
-}
-
-updateCartDisplay();
 
 /**
  * Xóa một sản phẩm khỏi giỏ hàng.
- * @param {number} productId - ID sản phẩm cần xóa.
+ * @param {number} productId - ID của sản phẩm cần xóa.
  */
 export function removeItemFromCart(productId) {
-  // 1. Lọc mảng 'cart' để loại bỏ sản phẩm có ID trùng khớp.
-  cart = cart.filter((item) => item.id !== productId);
-
-  // 2. Lưu trạng thái mới
+  cart = cart.filter(item => item.id !== productId);
   saveCart();
-
-  // 3. Cập nhật giao diện
-  updateCartDisplay();
+  renderMiniCart();
 }
 
 /**
- * Tạo chuỗi HTML cho danh sách sản phẩm trong giỏ hàng.
- */
-function renderCartItems() {
-  // Nếu giỏ hàng rỗng, hiển thị thông báo.
-  if (cart.length === 0) {
-    return '<p class="cart-empty-message">Giỏ hàng của bạn đang trống.</p>';
-  }
-
-  // Dùng map để chuyển đổi mảng giỏ hàng sang mảng chuỗi HTML
-  return cart
-    .map((item) => {
-      // Tính tổng tiền cho từng sản phẩm (subtotal)
-      const subtotal = item.price * item.quantity;
-
-      return `
-           <div class="cart-item" data-id="${item.id}">
-            <span class="item-name">${item.name}</span>
-            <span class="item-price">Giá: ${subtotal.toLocaleString(
-              "vi-VN"
-            )} VND</span>
-            
-            <div class="quantity-controls">
-                <button class="decrease-qty-btn" data-id="${item.id}">-</button>
-                <span class="item-quantity">${item.quantity}</span>
-                <button class="increase-qty-btn" data-id="${item.id}">+</button>
-                </div>
-
-            <button class="remove-item-btn" data-id="${item.id}">Xóa</button>
-        </div>
-        `;
-    })
-    .join(""); // Nối mảng chuỗi HTML lại
-}
-
-/**
- * Cập nhật số lượng của một sản phẩm đã có trong giỏ hàng.
- * @param {number} productId - ID sản phẩm cần cập nhật.
- * @param {number} change - Giá trị thay đổi số lượng (+1 hoặc -1).
+ * Cập nhật số lượng của một sản phẩm. Nếu số lượng <= 0, xóa sản phẩm.
+ * @param {number} productId - ID của sản phẩm cần cập nhật.
+ * @param {number} change - Lượng thay đổi (+1 hoặc -1).
  */
 export function updateItemQuantity(productId, change) {
-  // 1. Tìm sản phẩm hiện có trong giỏ hàng
-  const existingItem = cart.find((item) => item.id === productId);
-  if (existingItem) {
-    // 2. Cập nhật số lượng
-    existingItem.quantity += change;
-    // 3. Nếu số lượng <= 0, xóa sản phẩm khỏi giỏ hàng
-    if (existingItem.quantity <= 0) {
-      cart = cart.filter((item) => item.id !== productId);
-    }
-  }
+    const itemIndex = cart.findIndex(item => item.id === productId);
 
-  // 4. Lưu trạng thái mới
-  saveCart();
-  // 5. Cập nhật giao diện
-  updateCartDisplay();
+    if (itemIndex > -1) {
+        cart[itemIndex].quantity += change;
+
+        if (cart[itemIndex].quantity <= 0) {
+            // Nếu số lượng là 0 hoặc ít hơn, xóa sản phẩm
+            cart.splice(itemIndex, 1);
+        }
+    }
+    saveCart();
+    renderMiniCart();
 }
