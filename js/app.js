@@ -5,7 +5,6 @@ import "./modules/componentLoader.js"; // Tự động tải mini-cart.html
 import { products } from "./data.js";
 import renderProducts from "./modules/product.js";
 import {
-  initCart, // <-- Import hàm khởi tạo
   addItemToCart,
   removeItemFromCart,
 } from "./modules/cart.js";
@@ -45,12 +44,8 @@ function initializeApp() {
   // 1. Hiển thị sản phẩm (nếu có container trên trang)
   renderProducts(products, "newArrivalsContainer");
   renderProducts(products, "shopContainer");
-
-  // 2. Khởi tạo giỏ hàng (tải dữ liệu từ localStorage và render lần đầu)
-  // Phải được gọi SAU KHI component loader đã chạy xong (DOMContentLoaded đảm bảo điều này)
-  initCart();
   
-  // 3. Thiết lập các trình lắng nghe sự kiện cho các nút
+  // 2. Thiết lập các trình lắng nghe sự kiện cho các nút
   setupEventListeners();
 }
 

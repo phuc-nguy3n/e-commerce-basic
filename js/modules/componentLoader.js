@@ -1,3 +1,5 @@
+import { initCart } from './cart.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   const cartDropdown = document.querySelector('.cart-dropdown');
 
@@ -11,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(html => {
         cartDropdown.insertAdjacentHTML('beforeend', html);
+        initCart(); // Initialize cart after loading the component
       })
       .catch(error => {
         console.error('Error loading mini-cart:', error);
