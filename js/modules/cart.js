@@ -94,23 +94,24 @@ export function initCart() {
 
 /**
  * Thêm một sản phẩm vào giỏ hàng hoặc tăng số lượng nếu đã có.
- * @param {number} productId - ID của sản phẩm cần thêm.
+ * @param {string} productId - ID của sản phẩm cần thêm.
+ * @param {number} quantity - Số lượng sản phẩm cần thêm.
  */
-export function addItemToCart(productId) {
+export function addItemToCart(productId, quantity = 1) {
   const productData = products.find(p => p.id === productId);
   if (!productData) return;
 
   const existingItem = cart.find(item => item.id === productId);
 
   if (existingItem) {
-    existingItem.quantity++;
+    existingItem.quantity += quantity;
   } else {
     cart.push({
       id: productData.id,
       name: productData.name,
       price: productData.price,
       image: productData.image,
-      quantity: 1,
+      quantity: quantity,
     });
   }
 

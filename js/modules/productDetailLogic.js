@@ -7,8 +7,6 @@ import { addItemToCart as addToCart } from "./cart.js";
 export function renderProductDetail(product) {
   const container = document.getElementById("productDetailContainer");
   if (container) {
-    // Tạo HTML cho các ảnh thumbnail
-    // Giả định product.images là một mảng các URL ảnh
     const thumbnailHTML = product.images
       .map(
         (image, index) => `
@@ -27,13 +25,11 @@ export function renderProductDetail(product) {
       )
       .join("");
 
-    // Giá giả định: Cần trường oldPrice và discountPercent trong product data
     const oldPrice = product.oldPrice ? `$${product.oldPrice.toFixed(2)}` : "";
     const discountPercent = product.discountPercent
       ? `${product.discountPercent}% Off`
       : "";
 
-    // Tùy chọn kích thước giả định: Cần trường sizes là mảng ['S', 'M', 'L', 'XL'] trong product data
     const sizes = product.sizes || ["S", "M", "L", "XL"];
     const sizeOptionsHTML = sizes
       .map(
@@ -195,7 +191,6 @@ export function renderProductDetail(product) {
             </div>
         `;
 
-    // Thêm logic tương tác cho gallery và quantity controls ngay sau khi render
     addInteractionListeners(product);
   }
 }
@@ -205,13 +200,12 @@ export function renderProductDetail(product) {
  * @param {Object} product - Đối tượng sản phẩm.
  */
 function addInteractionListeners(product) {
-  // Lấy các element cần thiết
   const quantityInput = document.getElementById("productQuantity");
   const increaseButton = document.getElementById("increaseQuantity");
   const decreaseButton = document.getElementById("decreaseQuantity");
   const sizeOptions = document.querySelectorAll("#sizeOptions .size-swatch");
   const selectedSizeDisplay = document.getElementById("selectedSize");
-  const addToCartButton = document.getElementById("addToCartButton");
+  const addToCartButton = document.querySelector(".btn-add-to-cart");
   const mainImage = document.getElementById("mainProductImage");
   const thumbnails = document.querySelectorAll("#productThumbnails img");
 
@@ -219,7 +213,6 @@ function addInteractionListeners(product) {
     ? selectedSizeDisplay.textContent
     : "S";
 
-  // 1. Gallery Interaction (Giữ nguyên)
   if (mainImage && thumbnails.length > 0) {
     thumbnails.forEach((thumb) => {
       thumb.addEventListener("click", function () {
@@ -230,31 +223,23 @@ function addInteractionListeners(product) {
     });
   }
 
-  // =========================================================================
-  // 2. LOGIC TĂNG/GIẢM SỐ LƯỢNG SẢN PHẨM CHI TIẾT
-  // =========================================================================
   if (quantityInput && increaseButton && decreaseButton) {
     const updateQuantity = (change) => {
       let currentVal = parseInt(quantityInput.value);
       let newVal = currentVal + change;
 
-      // Đảm bảo số lượng không nhỏ hơn 1
       if (newVal >= 1) {
         quantityInput.value = newVal;
       } else {
-        quantityInput.value = 1; // Giữ ở mức tối thiểu là 1
+        quantityInput.value = 1; 
       }
     };
 
-    // GẮN LISTENER CHO NÚT TĂNG
     increaseButton.addEventListener("click", () => updateQuantity(1));
 
-    // GẮN LISTENER CHO NÚT GIẢM
     decreaseButton.addEventListener("click", () => updateQuantity(-1));
   }
-  // =========================================================================
 
-  // 3. Size Selection (Giữ nguyên)
   if (sizeOptions.length > 0) {
     sizeOptions.forEach((option) => {
       option.addEventListener("click", function () {
@@ -269,15 +254,12 @@ function addInteractionListeners(product) {
     });
   }
 
-  // 4. Add to Cart Logic (Gọi module giỏ hàng)
   if (addToCartButton) {
     addToCartButton.addEventListener("click", () => {
       const quantity = parseInt(quantityInput.value);
 
-      // Gọi hàm thêm vào giỏ hàng với Quantity và Size đã chọn
-      addToCart(product, quantity, selectedSize);
+      addToCart(product.id, quantity);
 
-      // Hiệu ứng lắc
       const cartIcon = document.querySelector(".fa-shopping-cart").closest("a");
       if (cartIcon) {
         cartIcon.classList.add("shake-animation");
@@ -298,33 +280,23 @@ function addInteractionListeners(product) {
 export function renderRelatedProducts(currentProduct, allProducts) {
   const relatedContainer = document.getElementById("relatedProductsContainer");
 
-  // 1. Lọc các sản phẩm cùng Category, nhưng không phải chính nó
   const relatedProducts = allProducts
     .filter(
       (p) =>
         p.category === currentProduct.category && p.id !== currentProduct.id
     )
-    .slice(0, 4); // Chỉ lấy tối đa 4 sản phẩm
+    .slice(0, 4); 
 
   if (relatedContainer && relatedProducts.length > 0) {
-    // Tái sử dụng logic render card sản phẩm nếu cần, hoặc tạo HTML đơn giản
     const relatedHTML = relatedProducts
       .map(
         (p) => `
             <div class="col-lg-3 col-md-6 col-sm-6 d-flex align-items-stretch">
-                <a href="product-detail.html?id=${
-                  p.id
-                }" class="text-decoration-none text-dark w-100">
+                <a href="product-detail.html?id=${p.id}" class="text-decoration-none text-dark w-100">
                     <div class="product-card text-center p-3">
-                        <img src="${
-                          p.images[0]
-                        }" class="img-fluid rounded-3" alt="${
-          p.name
-        }" style="height: 200px; object-fit: cover;">
+                        <img src="${p.images[0]}" class="img-fluid rounded-3" alt="${p.name}" style="height: 200px; object-fit: cover;">
                         <h5 class="mt-3 mb-1">${p.name}</h5>
-                        <p class="text-danger fw-bold">$${p.price.toFixed(
-                          2
-                        )}</p>
+                        <p class="text-danger fw-bold">$${p.price.toFixed(2)}</p>
                     </div>
                 </a>
             </div>
